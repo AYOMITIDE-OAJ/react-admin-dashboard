@@ -73,4 +73,7 @@ src
 🟨
 
 ## SCREENSHOT
-[React Grid Screenshot](screenshot/grid-control-admin.PNG)
+![React Grid Screenshot](screenshot/grid-control-admin.PNG)
+
+Caveat:
+Setup Automated Deployment to Github pages, but apparently Github pages is not Free for Private repositories
