@@ -71,7 +71,7 @@ src
 ├── App.tsx
 └── index.ts
 🟨
-
+```
 ## SCREENSHOT
 ![React Grid Screenshot](screenshot/grid-control-admin.PNG)
 
