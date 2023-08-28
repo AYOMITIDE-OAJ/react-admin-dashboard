@@ -1,11 +1,22 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
 
-// 🟡🟡🟡 Color + Typography of Website...
+interface ColorMode {
+    toggleColorMode: () => void;
+  }
 
+  export const ColorModeContext = createContext<ColorMode>({
+    toggleColorMode: () => {},
+  });
+  
+  interface Tokens {
+    [key: string]: {
+      [key: number]: string;
+    };
+  }
 
 // color design tokens export
-export const tokens = (mode) => ({
+export const tokens = (mode: 'light' | 'dark'): Tokens => ({
     ...(mode === "dark"
         ? {
             grey: {
@@ -125,7 +136,7 @@ export const tokens = (mode) => ({
 
 
 // mui theme settings
-export const themeSettings = (mode) => {
+export const themeSettings = (mode: 'light' | 'dark') => {
 
     const colors = tokens(mode);
 
@@ -202,15 +213,11 @@ export const themeSettings = (mode) => {
 
 
 // context for color mode
-export const ColorModeContext = createContext({
-    // this function allow us to change the color of app globally
-    toggleColorMode: () => { },
-});
 
 
 export const useMode = () => {
     
-    const [mode, setMode] = useState("dark");
+    const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
     const colorMode = useMemo(
         () => ({
@@ -221,5 +228,5 @@ export const useMode = () => {
     );
 
     const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-    return [theme, colorMode];
+    return [theme, colorMode] as const;
 };
