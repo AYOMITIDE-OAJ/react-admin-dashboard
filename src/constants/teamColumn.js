@@ -3,21 +3,9 @@ import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import { Box, Typography } from "@mui/material";
 
-type BoxType = typeof Box;
 
-interface TeamColumnsProps {
-  colors: {
-    greenAccent: {
-      600: string;
-      700: string;
-    };
-    grey: {
-      100: string;
-    };
-  };
-}
 
-const teamColumns = ({ colors }: TeamColumnsProps) => {
+const teamColumns = (colors) => {
   return [
     { field: "id", headerName: "ID" },
     {
@@ -47,30 +35,30 @@ const teamColumns = ({ colors }: TeamColumnsProps) => {
       field: "accessLevel",
       headerName: "Access Level",
       flex: 1,
-      renderCell: ({ row: { access } }: { row: { access: string } }) => {
+      renderCell: ({ row: { access } }) => {
         return (
           <Box
-            width="60%"
+           width="60%"
             m="0 auto"
             p="5px"
             display="flex"
             justifyContent="center"
             backgroundColor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : access === "manager"
-                ? colors.greenAccent[700]
-                : colors.greenAccent[700]
-            }
-            borderRadius="4px"
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {access}
-            </Typography>
-          </Box>
+            access === "admin"
+              ? colors.greenAccent[600]
+              : access === "manager"
+              ? colors.greenAccent[700]
+              : colors.greenAccent[700]
+          }
+          borderRadius="4px"
+        >
+          {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
+          {access === "manager" && <SecurityOutlinedIcon />}
+          {access === "user" && <LockOpenOutlinedIcon />}
+          <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+            {access}
+          </Typography>
+        </Box>
         );
       },
     },

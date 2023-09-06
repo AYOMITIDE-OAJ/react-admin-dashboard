@@ -1,20 +1,20 @@
-import { mockDataTeam } from "../../constants/mockData";
+import { mockDataInvoices } from "../../constants/mockData";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../styles/theme";
 import { Header } from "../../components";
-import teamColumns from "../../constants/teamColumn";
+import invoicesColumns from "../../constants/invoicesColumn";
 
-const Team = () => {
+const Invoices = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="INVOICES" subtitle="List of Invoice Balances" />
       <Box
         m="40px 0 0 0"
-        height="70vh"
+        height="75vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -33,8 +33,8 @@ const Team = () => {
             backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
-            backgroundColor: colors.blueAccent[700],
             borderTop: "none",
+            backgroundColor: colors.blueAccent[700],
           },
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
@@ -43,12 +43,12 @@ const Team = () => {
       >
         <DataGrid
           checkboxSelection
-          rows={mockDataTeam}
-          columns={teamColumns(colors) as GridColDef[]}
+          rows={mockDataInvoices}
+          columns={invoicesColumns(colors)}
         />
       </Box>
     </Box>
   );
 };
 
-export default Team;
+export default Invoices;

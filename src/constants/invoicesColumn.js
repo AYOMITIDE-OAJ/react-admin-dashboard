@@ -1,14 +1,9 @@
 import { Typography } from "@mui/material";
+import React from "react";
 
-interface InvoicesColumnsProps {
-  colors: {
-    greenAccent: {
-      500: string;
-    };
-  };
-}
 
-const invoicesColumns = ({ colors }: InvoicesColumnsProps) => {
+
+const invoicesColumns = ({ colors }) => {
   return [
     { field: "id", headerName: "ID" },
     {
@@ -31,7 +26,7 @@ const invoicesColumns = ({ colors }: InvoicesColumnsProps) => {
       field: "cost",
       headerName: "Cost",
       flex: 1,
-      renderCell: ({ row: { cost } }: { row: { cost: number } }) => (
+      renderCell: ({ row: { cost } }) => (
         <Typography color={colors.greenAccent[500]}>
           ${cost}
         </Typography>
@@ -46,4 +41,4 @@ const invoicesColumns = ({ colors }: InvoicesColumnsProps) => {
   ];
 };
 
-export default invoicesColumns
+export default invoicesColumns;
